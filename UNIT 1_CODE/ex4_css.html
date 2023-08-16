@@ -1,15 +1,21 @@
 <html>
     <head>
-        <title> My first HTML Document </title>
+        <title> My First HTML Document </title>
         <style>
-            li{
-                color:red;
-                font-family: sans-serif; 
-                font-size:20px
+            a:link {
+                color:pink;
+            }
+            a:visited {
+                color:orange;
+            }
+            a:active {
+                color:green;
             }
         </style>
+        <!--<link rel="stylesheet" type="text/css" href="mystyle1.css">-->
     </head>
-    <body style="background-color: powderblue;">
+    <body style="background-color: powderblue">
+        <a href="ex3.html">click here to green</a>
        <!-- Paragraphs-->
        <p> 
         This is my <strong> first </strong> paragraph <br>
@@ -20,6 +26,13 @@
             x<sub>2</sub><sup>3</sup>
         
        </p> 
+       <div>
+        <p> CSS style</p>
+        <p> Selectors</p>
+        <span>
+            <p> Child</p>
+        </span>
+       </div>
        <!-- Headings-->
        <div style="color:red; background-color: yellow">
        <h1> Header1</h1>
@@ -32,13 +45,13 @@
        <!-- Lists-->
        <!-- Ordered lists, Unordered lists, Definition list-->
        <ul type="circle">
-        <li>Apple</li>
+        <li class="fruits">Apple</li>
         <li>Orange</li>
-        <li>Banana</li>
+        <li class="fruits">Banana</li>
        </ul>
        <ol type="A" start="3">
-        <li>Data Structures</li>
-        <li>Web Technologies</li>
+        <li id="ds1">Data Structures</li>
+        <li class="sub">Web Technologies</li>
         <li>DDCO</li>
         <li>Data Science</li>
        </ol>
