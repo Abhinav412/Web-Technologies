@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title> Java script program 1</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+            function add(a,b)
+            {
+                return a+b;
+            }
+            var x=add(2,5);
+            var ref = add;
+            var ref = function(...args)
+            {
+                var s=0;
+                for(var i  in arguments)
+                s=s+arguments[i];
+                return s;
+            }
+            console.log(ref(4,5,20,30)); // 20 and 30 are not accesible since number of arguments doesnt match with number of parameters.
+            console.log(ref(5)); // b is undefined here so output will come out to be NaN.(NaN means Not a Number)
+        </script>
+    </body>
+</html>
