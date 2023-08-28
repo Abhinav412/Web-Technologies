@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title> Java script program 1</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+          // Method 1: Object literals
+          /*let item = 
+          {
+            name: "Reebok",
+            price: "Rs.20000",
+            av_qty:20
+          }
+          //document.write(item.name+" "+item.price+" "+item.av_qty+"<br>");
+          item.show=function()
+          {
+            document.write(this.name+"<br>"+this.price+"<br>"+this.av_qty+"<br>")
+          }
+          item.show();*/
+
+          //Method 2: Object constructors
+          function item(name,price,av_qty)
+          {
+            this.fname = name;
+            this.iprice = price;
+            this.qty = av_qty;
+            /*this.show = function()
+            {
+                document.write(this.fname+"<br>"+this.iprice+"<br>"+this.qty+"<br>")
+            }*/
+          }
+          item.prototype.show=function()
+            {
+                document.write(this.fname+" "+this.iprice+" "+this.qty+"<br>")
+            }
+          let item1 = new item("Reebok","Rs.20000",10);
+          let item2 = new item("Nike","Rs.20000",10);
+          item1.show();
+          item2.show();
+        </script>
+    </body>
+</html>
