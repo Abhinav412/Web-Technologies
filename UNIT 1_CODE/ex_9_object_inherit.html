@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <title> Java script program 1</title>
+    </head>
+    <body>
+        <script type="text/javascript">
+          /*//Method 1:Javascript Object Inheritence using create() method
+          let item =
+          {
+            name:"Reebok",
+            price:"Rs.20000",
+            av_qty:20
+          }
+          //let item1 = Object.create(item);
+          let item1 = Object.create(item, {name:{value:"Nike"},price:{value:"Rs.25000"},av_qty:{value:25},desc:{value:"Full HD"}})
+          document.write(item1.name+" "+item1.desc);
+          */
+          //Method 2: Object constructors
+          function item(name,price,av_qty)
+          {
+            this.fname = name;
+            this.iprice = price;
+            this.qty = av_qty;
+
+          }
+          let item2 = new item("Reebok","Rs.20000",10);
+          item.prototype.show=function()
+            {
+                document.write(this.fname+" "+this.iprice+" "+this.qty+"<br>")
+            }
+          function gc_item(name,price,av_qty,desc)
+          {
+            item.call(this,name,price,av_qty);
+            this.desc=desc; 
+          }
+          let gc1=new gc_item("PS5","Rs.40000",3,"FULL HD");
+          document.write(gc1.name+" "+gc1.desc)
+          /*let item2 = new item("Nike","Rs.20000",10);
+          item1.show();
+          item2.show();*/
+        </script>
+    </body>
+</html>
