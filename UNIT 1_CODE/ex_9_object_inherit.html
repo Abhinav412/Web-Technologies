@@ -33,8 +33,12 @@
             item.call(this,name,price,av_qty);
             this.desc=desc; 
           }
+          gc_item.prototype = new item();
+          gc_item.prototype.constructor=gc_item;
           let gc1=new gc_item("PS5","Rs.40000",3,"FULL HD");
-          document.write(gc1.name+" "+gc1.desc)
+          //document.write(gc1.fname+" "+gc1.desc)
+          gc1.show();
+          item2.show();
           /*let item2 = new item("Nike","Rs.20000",10);
           item1.show();
           item2.show();*/
