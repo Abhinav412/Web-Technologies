@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>DOM Manipulation</title>
+        <script>
+            function init()
+            {
+                //1. Change paragraph color to Blue
+                p1=document.querySelector("li");
+                p1.style.color="blue";
+                
+                //2. Change the list item having class name 'a' to uppercase
+                list = document.querySelectorAll("li.a");
+                for(i=0; i<list.length; i++)
+                list[i].innerText=list[i].innerText.toUpperCase();
+                
+                //3. Create a new element
+                newsub=document.createElement("li");
+                newsub.innerText = "AFLL";
+                newsub2=document.createTextNode("DDCO");
+
+                //4. Append child
+                ul1=document.querySelector("ul");
+                //ul1.appendChild(newsub);
+
+                //5. Insert before Web Technologies
+                //ul1.insertBefore(newsub2,list[0]);
+
+                //6. Insert first child of ul
+                //ul1.insertBefore(newsub, ul1.lastChild);
+
+                //7. Remove Web
+                //list[0].remove();
+                //ul1.removeChild(list[0]);
+
+                //8. Replace Web with AFLL
+                ul1.replaceChild(newsub, ul1.children[1]);
+                list[0].parentNode.replaceChild(newsub,ul1.childern[2]);
+
+            }
+        </script>
+    </head>
+    <body onload="init()">
+        <p> Subjects </p>
+        <ul>
+            <li> Data Structures </li>
+            <li class="a"> Web Technologies</li>
+            <li class="a"> Data Science </li>
+        </ul>
+    </body>
+</html>
