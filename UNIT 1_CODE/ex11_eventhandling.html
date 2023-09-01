@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title> DOM Manipulation </title>
+        <style>
+            #mydiv1, #mydiv2
+            {
+                background-color: coral;
+                padding:50px;
+            }
+            #myp1, #myp2
+            {
+                background-color: white;
+                font-size: 20px;
+                border: 1px solid;
+                padding:20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="mydiv1">
+            <h2> Bubbling </h2>
+            <p id="myp1"> Click Me </p>
+        </div>
+        <br><br>
+        <div id="mydiv2">
+            <h2> Capturing </h2>
+            <p id="myp2"> Click Me </p>
+        </div>
+        <script>
+            document.getElementById("myp1").addEventListener("click",function(){alert("You clicked the white element");
+            console.log(event.eventphase+" "+event.eventid)},true)
+            document.getElementById("mydiv1").addEventListener("click",function(){alert("You clicked the orange element");
+            console.log(event.eventphase+" "+event.eventid)},true)
+        </script>
+    </body>
+</html>
