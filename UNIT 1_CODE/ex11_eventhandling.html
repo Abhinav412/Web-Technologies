@@ -28,9 +28,9 @@
         </div>
         <script>
             document.getElementById("myp1").addEventListener("click",function(){alert("You clicked the white element");
-            console.log(event.eventphase+" "+event.eventid)},true)
+            console.log(event.eventPhase+" "+event.target.id)},true)
             document.getElementById("mydiv1").addEventListener("click",function(){alert("You clicked the orange element");
-            console.log(event.eventphase+" "+event.eventid)},true)
+            console.log(event.eventPhase+" "+event.target.id)},true)
         </script>
     </body>
 </html>
