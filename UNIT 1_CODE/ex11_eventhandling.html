@@ -4,7 +4,7 @@
         <style>
             #mydiv1, #mydiv2
             {
-                background-color: coral;
+                background-color: orange;
                 padding:50px;
             }
             #myp1, #myp2
@@ -28,9 +28,24 @@
         </div>
         <script>
             document.getElementById("myp1").addEventListener("click",function(){alert("You clicked the white element");
-            console.log(event.eventPhase+" "+event.target.id)},true)
+            console.log(event.eventPhase+" "+event.target.id)},false)
             document.getElementById("mydiv1").addEventListener("click",function(){alert("You clicked the orange element");
+            console.log(event.eventPhase+" "+event.target.id)},false)
+            document.getElementById("myp2").addEventListener("click",function(){alert("You clicked the white element");
             console.log(event.eventPhase+" "+event.target.id)},true)
+            document.getElementById("mydiv2").addEventListener("click",function(){alert("You clicked the orange element");
+            console.log(event.eventPhase+" "+event.target.id)},true)
+            document.addEventListener("contextmenu",hidemenu);
+            function hidemenu(e)
+            {
+                e.preventDefault();
+            }
+            document.addEventListener("mouseover",mmove)
+            function mmove(e)
+            {
+                console.log("Mouse moved on the screen");
+                console.log(e.screenX + "  " + e.screenY);
+            }
         </script>
     </body>
 </html>
