@@ -5,10 +5,35 @@
             //Math.random returns a value between 0 -1
             //to get a number between a and b
             //var rnd=a+Math.floor(Math.random()*(b-a))
-            
+            function init()
+            {
+                p1=document.querySelector("#p");
+                p1.value+=2;
+                if(p1.value != 100)
+                setInterval(init,1000);
+            }
+            function init1()
+            {
+                v1 = document.querySelector("#v1");
+                v1.play();
+                setInterval(fun,2000);
+            }
+            function fun()
+            {
+                tmp = Math.floor(Math.random()*(v1.duration-5));
+                console.log(tmp);
+                v1.currentTime = tmp;
+            }
         </script>
     </head>
-    <body>
-        <progress value="30" max="100"></progress>
+    <body onload ="init1()">
+        <video id="v1" autoplay muted controls="c1" height="200px" width="400px">
+            <source src="Avengers.mp4" type="video/mp4">
+        </video>
+        <audio preload id="a1" controls="c2">
+            <source src="Jai Ho.mp3" type="audio/mp3">
+        </audio>
+        <label for="file"> Progress done on activity </label>
+        <progress id = "p" value="30" max="100"></progress>
     </body>
 </html>
