@@ -1,0 +1,130 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Application For Re-evaluation
+        </title>
+        <link rel="stylesheet" type="text/css" href="assignment.css">
+    </head>
+    <body>
+        <form id="Re-evaluationform">
+        <table>
+            <caption><h2>Re-evaluation Request Form</h2></caption>
+            <tr>
+                <td colspan="2"><img src="logoPesu.png" alt="PESU Logo" id="Logo"></td>
+            </tr>
+            <tr>
+                <td><label for="name">Name</label></td>
+                <td><input type="text" id="name" name="name" required></td>
+            </tr>
+            <tr>
+                <td><label for="srn">SRN</label></td>
+                <td><input type="text" id="srn" name="srn" required></td>
+            </tr>
+            <tr>
+                <td><label for="subject">Subjects you would like to re-evaluate</label></td>
+                <td><select>
+                    <option value="option1">Subjects</option>
+                    <option value="option2">Statistics for Data Science</option>
+                    <option value="option3">Web Technologies</option>
+                    <option value="option4">Automata Formal Languages and Logic</option>
+                    <option value="option5">Digital Design and Computer Organisation</option>
+                    <option value="option6">Data Structures and its Applications</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td><label>Date of Request</label></td>
+                <td><input type="radio" id="date" name="date" required>11-09-2023</td>
+                <td><input type="radio" id="date" name="date" required>12-09-2023</td>
+                <td><input type="radio" id="date" name="date" required>13-09-2023</td>
+            </tr>
+            <tr>
+                <td><label>Contact Number</label></td>
+                <td><input type="number" id="contactnumber" name="contactnumber" placeholder="10 digits"></td>
+            </tr>
+            <tr>
+                <td><label>Email id</label></td>
+                <td><input type="email" id="email" name="email" required></td>
+            </tr>
+            <tr>
+                <td><label>Confirmation</label></td>
+                <td><input type="checkbox" id="confirmation" name="confirmation" required>All details are appropriate.</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+                </td>
+            </tr>
+            <tr>
+                <td><alert>LAST DATE TO APPLY FOR RE-EVALUATION IS 14-09-2023</alert></td>
+            </tr>
+        </table>
+        </form>
+        <script>
+            document.getElementById("Re-evaluationform").addEventListener("submit",function(event){
+                alert("Successfully submitted");
+                document.getElementById("Re-evaluationform").reset();
+            })
+        </script>
+    </body>
+    <!-- CSS CODE 
+    body {
+    background-color: #c7c4c4c4;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 60%;
+}
+
+caption h2 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 5px;
+}
+
+#logo {
+    display: block;
+    margin: 0 auto;
+}
+
+button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button[type="reset"] {
+    background-color: #DC3545;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+alert {
+    font-weight: bolder;
+    color: red;
+}-->
+</html>
