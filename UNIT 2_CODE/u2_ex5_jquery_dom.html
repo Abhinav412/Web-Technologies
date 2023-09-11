@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title> Jquery DOM </title>
+        <script src="jquery-3.7.1.js"></script>
+        <script>
+            /*$(document).ready(handle);
+            function handle()
+            {
+                $("li").click(function(){
+                    $(this).hide();
+                })
+            }*/
+            /*$(document).ready(function(){
+                $("li:even").css("color","blue");
+                $("li:odd").css("color","red");
+                console.log($("p").html());
+                console.log($("li#g1").html());
+                $("#g1").html("AFLL");
+                //$("#g1").text("AFLL");
+                $("p").text("Hello World");
+                newli1 = document.createElement("li");
+                $(newli1).html("Math1");
+                newli2 = document.createElement("l1");
+                $(newli2).html("Math2");
+                //$("li:last").after(newli1);
+                //$("li:last").before(newli2); 
+                $("ul").append(newli1,newli2);
+                $("l1:first").appendTo("ul");
+            })*/
+            $(document).ready(function(){
+                $("#hide").click(function(){
+                    $("li").hide(5000);
+                })
+                $("#show").click(function(){
+                    $("li").show(5000);
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <p> Subjects </p>
+        <ul>
+            <li> Data Structures </li>
+            <li id="g1"> Web Technologies </li>
+            <li> Data Science </li>
+            <li> DDCO </li>
+        </ul>
+        <button id="hide"> Click button to hide all list elements </button>
+        <button id="show"> Click button to show all list elements </button>
+    </body>
+</html>
