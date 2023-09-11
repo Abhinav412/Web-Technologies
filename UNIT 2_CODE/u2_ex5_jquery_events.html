@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title> Jquery Event Handling </title>
+        <script src="jquery-3.7.1.js"></script>
+        <script>
+            //1. If paragraph is clicked change color and inner HTML
+            /*$(document).ready(function(){
+                $("p").click(function(){
+                    $(this).css("color","red").html("I was clicked");
+                })
+            })*/
+            //2. when mouse is over element changes occur
+            /*$(document).ready(function(){
+                $("p").on("click mouseover",function(){
+                    $(this).css("color","red").html("I was clicked");
+                })
+            })*/
+            
+            /*$(document).ready(function(){
+                $("*").on("mouseover",function(){
+                    $(event.target).css("color","red").html("I was clicked");
+                })
+            })*/
+            //3. slideToggle() - Display or hide the matched elements with a sliding motion
+            /*$(document).ready(function(){
+                $("p").mouseover(function(){
+                    $("ul").slideToggle("slow");
+                })
+            })*/
+            //4. fadeToggle()- Display or hide the elements with a fading motion
+            /*$(document).ready(function(){
+                $("p").mouseover(function(){
+                    $("ul").fadeToggle("slow");
+                    $("button").toggle();
+                })
+            })*/
+            $(document).ready(function(){
+                $("li#g1").click(function(){
+                    $(this).fadeOut(1000,function(){
+                        $(this).fadeIn(1000);
+                    })
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <p> Subjects </p>
+        <ul>
+            <li> Data Structures </li>
+            <li id="g1"> Web Technologies </li>
+            <li> Data Science </li>
+            <li> DDCO </li>
+        </ul>
+        <button id="hide"> Click button to hide all list elements </button>
+        <button id="show"> Click button to show all list elements </button>
+    </body>
+</html>
