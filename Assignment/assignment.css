@@ -1,0 +1,58 @@
+body {
+    background-color: #c7c4c4c4;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+table {
+    margin: 20px auto;
+    border-collapse: collapse;
+    width: 60%;
+}
+
+caption h2 {
+    text-align: center;
+    margin: 10px 0;
+}
+
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 5px;
+}
+
+#logo {
+    display: block;
+    margin: 0 auto;
+}
+
+button {
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+button[type="reset"] {
+    background-color: #DC3545;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+alert {
+    font-weight: bolder;
+    color: red;
+}
