@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>
+            Web worker
+        </title>
+    </head>
+    <body>
+        <p> Count Numbers: <output id="result"></output></p>
+        <button onclick="startworker()"> Start worker </button>
+        <button onclick="stopworker()"> Stop worker </button>
+    </body>
+    <script>
+        var w;
+        function startworker()
+        {
+            w = new Worker("demo_worker.js");
+            w.onmessage = function(event){
+                document.getElementById("result").innerHTML=event.data;
+            }
+        }
+        function stopworker()
+        {
+            w.terminate(); //free the resources
+            w=undefined;
+        }
+    </script>
+</html>
