@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <title>JSON</title>
+    </head>
+    <body>
+        <p id="demo1"></p>
+        <p id="demo2"></p>
+    </body>
+    <script>
+        var str='{"name":"Thor","cast":"Chris Hemsworth,Tom Hiddleston"}';
+        var obj = JSON.parse(str);
+        document.getElementById("demo1").innerHTML=obj.name;
+        obj.year="2023";
+        obj.rating="7.5";
+        str=JSON.stringify(obj);
+        document.getElementById("demo2").innerHTML=str;
+    </script>
+</html>
