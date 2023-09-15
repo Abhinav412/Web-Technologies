@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title> Promise </title>
+    </head>
+    <script>
+        var date = new Promise(function(resolve,reject){
+            setTimeout(function(){
+                weather=true;
+                if(weather){
+                    const dateDetails={
+                        name:'Cubana Restaurant',
+                        location:'5th Street',
+                        table:5
+                    }
+                    resolve(dateDetails)
+                }
+                else
+                reject(new Error('Bad Weather'))
+            },5000)
+        })
+        date
+            .then(function(details){
+                console.log(details);
+                console.log("Going on a Date")
+            })
+            .catch(function(error){
+                console.log(error.message);
+            })
+    </script>
+    <body>
+
+    </body>
+</html>
