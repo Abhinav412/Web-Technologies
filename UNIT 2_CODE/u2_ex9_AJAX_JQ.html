@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title> AJAX JQ </title>
+    </head>
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        function getdata()
+        {
+            /*$.get('files/sample.txt',function(result,status,xhr){
+                $("#container").html(result);
+                console.log("Status:"+status);
+            })*/
+            $.getJSON('files/sample.json',function(result,status,xhr){
+                $("#container").html(result);
+                console.log("Status:"+status);
+            })
+        }
+    </script>
+    <body>
+        <button onclick="getdata()"> Get Data </button>
+        <div id="container"></div>
+    </body>
+</html>
