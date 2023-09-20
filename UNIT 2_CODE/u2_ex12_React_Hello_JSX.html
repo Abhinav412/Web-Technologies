@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title> React </title>
+		<script crossdomain src="https://unpkg.com/react@18/umd/react.development.js ">
+		</script>
+		<script crossdomain src="https://unpkg.com/react-dom@18/umd/react-dom.development.js">
+		</script>
+		<script crossdomain src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js ">
+		</script>	
+				
+	</head>
+	<body >
+		<div id="container"></div>
+		<script type="text/babel"> 
+		var dest=document.querySelector("#container");
+		/*React17
+		ReactDOM.render(
+			//<h1> React World </h1>,
+			React.createElement("h1",{style:{color:"red"}},"Hello World"),
+			dest
+			);
+		*/
+		//React 18
+		class Hello extends React.Component{
+			render(){
+				return <h1> Introduction to {this.props.topic} </h1>
+			}
+		}
+		const root = ReactDOM.createRoot(dest);
+		root.render(<div><Hello topic="React"/><Hello topic="Node JS"/></div>)
+		//root.render(<Hello/>);
+		//root.render(<h1> Hi </h1>);
+		</script>
+    </body>
+</html>
