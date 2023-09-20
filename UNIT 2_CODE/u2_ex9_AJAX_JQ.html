@@ -11,7 +11,7 @@
                 console.log("Status:"+status);
             })*/
             $.getJSON('files/sample.json',function(result,status,xhr){
-                $("#container").html(result);
+                $("#container").html(result.srn);
                 console.log("Status:"+status);
             })
         }
