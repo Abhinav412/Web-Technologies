@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title> XML JSON </title>
+    <script>
+        function loaddata(){
+            xhr = new XMLHttpRequest()
+            {
+                xhr.open("get","files/sample.json",true);
+                xhr.onreadystatechange = showdata;
+                xhr.responseType = "json";
+                xhr.send()
+            }
+        }
+        function showdata()
+        {
+            console.log("In showdata");
+            if(this.readystate == 4 && this.status == 200)
+            {
+                console.log("Inside if");
+                document.querySelector("#container").innerHTML.this.response.srn
+            }
+        }
+    </script>
+    </head>
+    <body>
+        <button onclick="loaddata"> Load Data </button>
+        <div id="container"></div>
+    </body>
+</html>
