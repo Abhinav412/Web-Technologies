@@ -27,9 +27,9 @@
             setInterval(this.timer,1000);
         }
         timer=()=>{
-            this.setState(()=>{
+            this.setState((pre)=>{
                 return
-                {seconds:this.state.seconds+1}
+                {seconds:pre.seconds+1}
             }
             )
         }
