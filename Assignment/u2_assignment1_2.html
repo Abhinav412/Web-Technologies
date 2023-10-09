@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>jquery Assignment 1</title>
+</head>
+
+<style>
+    .Haloheader
+    {
+        border: 4px solid black;
+        width: fit-content;
+        padding: 20px;
+    }
+    #Halop
+    {
+        font-size: larger;
+    }
+</style>
+
+<body>
+    <div id="Halo">
+        <h2 class="Haloheader">Halo 2 video game</h2>
+        <p id="Halop">Price $50.00</p>
+    </div>
+
+    <script>
+        let header = document.querySelector(".Haloheader");
+        let paragraph = document.querySelector("#Halop");
+
+        paragraph.addEventListener("click", function() {
+            paragraph.style.color = "red";
+            paragraph.style.fontSize = "xx-large";
+        });
+
+        header.addEventListener("click", function() {
+            alert("The discount sale is going to end");
+        }, true);
+    </script>
+
+</body>
+</html>
