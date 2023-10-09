@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title>jQuery Assignment 3</title>
+</head>
+<style>
+    #div {
+      display: none;
+      border: 1px solid rgb(188, 185, 185);
+      background-color: rgb(188, 185, 185);
+      width: fit-content;
+      height: 70;
+      padding: 30px;
+    }
+  </style>
+<body>
+  <button id="toggle">Toggle Element</button>
+  <div id="div" style="display: none;">This is a hidden Element.</div>
+
+  <script src="jquery-3.7.1.js"></script>
+  <script>
+    $(document).ready(function() 
+    {
+      $("#toggle").click(function() 
+      {
+        $("#div").fadeToggle("slow");
+      });
+    });
+  </script>
+</body>
+</html>
