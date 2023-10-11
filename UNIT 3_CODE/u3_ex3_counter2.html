@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>React</title>
+    <script crossdomain src="https://unpkg.com/react@18/umd/react.development.js ">
+    </script>
+    <script crossdomain src="https://unpkg.com/react-dom@18/umd/react-dom.development.js">
+    </script>
+    <script crossdomain src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js ">
+    </script>
+    <style>
+        h1,h2
+        {
+            text-align: center;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+      var des = document.querySelector("#container");
+      class Counter extends React.Component{
+        render(){
+            return(
+                <h1> 0 </h1>
+            )
+        }
+      }
+      class CounterDisplay extends React.Component{
+        render(){
+            return(
+                <div>
+                    <Counter/>
+                    <h2> Seconds </h2>
+                    <h2> Since the page loaded </h2>
+                </div>
+            )
+        }
+      }
+    const root = ReactDOM.createRoot(des);
+    root.render(<CounterDisplay/>)
+    </script>
+  </body>
+</html>
