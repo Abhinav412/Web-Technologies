@@ -8,7 +8,10 @@
     <script crossdomain src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js ">
     </script>
     <style>
-
+      h1,h2
+      {
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -26,7 +29,7 @@
         componentDidMount(){
             setInterval(this.timer,1000);
         }
-        timer=()=>{
+        timer(){
             this.setState((pre)=>{
                 return
                 {seconds:pre.seconds+1}
@@ -51,7 +54,7 @@
         }
       }
       const root = ReactDOM.createRoot(des);
-      root.render(<div>CounterDisplay</div>)
+      root.render(<CounterDisplay/>);
     </script>
   </body>
 </html>
