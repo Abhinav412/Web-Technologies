@@ -19,10 +19,28 @@
     <script type="text/babel">
       var des = document.querySelector("#container");
       class Counter extends React.Component{
+        constructor(props,context)
+        {
+          super(props,context);
+          this.state={
+            seconds:0
+          };
+          this.timer = this.timer.bind(this);
+        }
+        componentDidMount(){
+          setInterval(this.timer,1000);
+        }
+        timer(){
+          this.setState((prevState)=>{
+            return {
+              seconds:prevState.seconds+1
+            }
+          })
+        }
         render(){
-            return(
-                <h1> 0 </h1>
-            )
+          return(
+            <h1> {this.state.seconds} </h1>
+          )
         }
       }
       class CounterDisplay extends React.Component{
