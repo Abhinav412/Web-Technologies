@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>React</title>
+    <script crossdomain src="https://unpkg.com/react@18/umd/react.development.js ">
+    </script>
+    <script crossdomain src="https://unpkg.com/react-dom@18/umd/react-dom.development.js">
+    </script>
+    <script crossdomain src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js ">
+    </script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+      var colors=["Red","Yellow","Orange","Blue","Green"]
+      var des = document.querySelector("#container");
+      class CustomTextInput extends React.Component{
+        constructor(props){
+            super(props);
+            this.setTextRef=(element)=>{
+                this.myText = element;
+            }
+            this.changeText=(event)=>{
+                console.log(event.target.value + "clicked");
+                var i=Math.floor(Math.random()*5)
+                this.myText.innerHTML=colors[i];
+                this.myText.style.color=colors[i];
+                //this.myText.innerHTML = "changed"
+            }
+        }
+        render(){
+          return(
+            <div>
+            <h1 ref={this.setTextRef}>This is the text</h1>
+            <input type="button" value="Change the text" onClick={this.changeText}/>
+            </div>
+          )
+        }
+      }
+    const root = ReactDOM.createRoot(des);
+    root.render(<CustomTextInput/>)
+    </script>
+  </body>
+</html>
