@@ -11,14 +11,21 @@
   <body>
     <div id="container"></div>
     <script type="text/babel">
+      var txt;  
       var des = document.querySelector("#container");
       class MyDiv extends React.Component{
         constructor(props){
             super(props);
             this.setRef = (el)=>this.myRef=el;
             this.showChar=(event)=>{
+                if(event.shiftKey)
+                txt="<span style='color:red'>"+event.key+ "</span>"
+                else
+                txt=event.key;
+                this.myRef.innerHTML+=txt;
+                event.preventDefault();
                 //this.myRef.innerHTML = event.target.value;
-                this.myRef.innerHTML+=event.key;
+                //this.myRef.innerHTML+=event.key;
             }
         }
         render(){
