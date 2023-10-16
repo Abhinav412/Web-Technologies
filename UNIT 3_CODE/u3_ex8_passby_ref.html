@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>React</title>
+    <script crossdomain src="https://unpkg.com/react@18/umd/react.development.js ">
+    </script>
+    <script crossdomain src="https://unpkg.com/react-dom@18/umd/react-dom.development.js">
+    </script>
+    <script crossdomain src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js ">
+    </script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+      var des = document.querySelector("#container");
+      class Parent extends React.Component{
+        constructor()
+        {
+            super();
+            this.doClick=(event)=>{
+                this.inputText.focus();
+                console.log(this.inputText.value);
+            }
+        }
+        render(){
+            return(
+                <div>
+                <input type="text" ref={(element)=>{this.inputText=element}}/>
+                <input type="button" value="Click" onClick={this.doClick}/>
+                </div>
+            )
+        }
+      }
+    const root = ReactDOM.createRoot(des);
+    root.render(<Parent/>)
+    </script>
+  </body>
+</html>
