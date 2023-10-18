@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>React</title>
+    <script crossdomain src="https://unpkg.com/react@18/umd/react.development.js ">
+    </script>
+    <script crossdomain src="https://unpkg.com/react-dom@18/umd/react-dom.development.js">
+    </script>
+    <script crossdomain src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js ">
+    </script>
+  </head>
+  <body>
+    <div id="container"></div>
+    <script type="text/babel">
+      var des = document.querySelector("#container");
+      function FavColor(){
+        const [color,setColor] = React.useState("red");
+        return(
+            <div>
+                <p> My Favorite Color is {color}</p>
+                <button onClick={()=> setColor("blue")}> Blue </button>
+                <button onClick={()=> setColor("red")}> Red </button>
+                <button onClick={()=> setColor("pink")}> Pink </button>
+                <button onClick={()=> setColor("green")}> Green </button>
+            </div>
+        )
+      }
+    const root = ReactDOM.createRoot(des);
+    root.render(<FavColor/>)
+    </script>
+  </body>
+</html>
