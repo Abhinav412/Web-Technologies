@@ -1,2 +1,1 @@
-{"srn:1234","name:abcd"}
-Sample text for servers
+{"name":"abcd","srn":"1234"}
