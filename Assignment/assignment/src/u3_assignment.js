@@ -1,0 +1,151 @@
+import React, { useState } from 'react';
+import './u3_assignment.css';
+
+function App() {
+  const initialOrderItems = [
+    {
+      id: 1,
+      name: 'MAC book',
+      description: 'Apple MGN63HNA\nMacBook Air (Apple MI\nChip/8GB/256GB SSD/macOS Big\nSur/Retina) INR',
+      price: 90000,
+      quantity: 0,
+    },
+    {
+      id: 2,
+      name: 'Dell core i7',
+      description: '11th Generation Intel Core i7-11390H\n Processor Windows 11 Home INR',
+      price: 80000,
+      quantity: 0,
+    },
+    {
+      id: 3,
+      name: 'HP',
+      description: '11th generation INR',
+      price: 65000,
+      quantity: 0,
+    },
+  ];
+
+  const [orderItems, setOrderItems] = useState(initialOrderItems);
+
+  const quantChange = (id, increment) => {
+    const updatedOrderItems = orderItems.map((item) => {
+      if (item.id === id) {
+        return { ...item, quantity: Math.max(item.quantity + increment, 0) };
+      }
+      return item;
+    });
+  
+    setOrderItems(updatedOrderItems);
+  };
+
+  const calTc = () => {
+    let total = 0;
+    orderItems.forEach((item) => {
+      total += item.price * item.quantity;
+    });
+    return total;
+  };
+
+  const getCurDate = () => {
+    const today = new Date();
+    const date = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const year = today.getFullYear();
+    return `${date}/${month}/${year}`;
+  };
+
+  const getExpDelDate = () => {
+    const today = new Date();
+    today.setDate(today.getDate() + 3);
+    const date = String(today.getDate()).padStart(2, '0');
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const year = today.getFullYear();
+    return `${date}/${month}/${year}`;
+  };
+
+  const styles = {
+    item: {
+      border: '1px solid #ccc',
+      padding: '10px',
+      margin: '10px',
+    },
+  };
+
+  return (
+    <div>
+      <div id="start" style={styles.item}>
+        <div className='summary'>
+        <h1><b>Order Summary</b></h1>
+        </div>
+        <div className="ord">
+          {orderItems.map((item) => (
+            <div key={item.id} style={styles.item} className="ord">
+              <div>
+                <strong>{item.name}</strong>
+              </div>
+              <div>
+                Description: <br />
+                <div className="description">{item.description}</div>
+              </div>
+              <div>Price: {item.price} INR</div>
+              <div>
+                Quantity: {item.quantity}<br />
+                <button className="inc_but" onClick={() => quantChange(item.id, 1)}>+</button>
+                <button className="dec_but" onClick = {()=>quantChange(item.id,-1)}>-</button>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="total">
+          <strong>Total: {calTc()} INR</strong>
+        </div>
+      </div>
+      <div>
+        Order Date: {getCurDate()}
+      </div>
+      <div>
+        Expected Delivery Date: {getExpDelDate()}
+      </div>
+    </div>
+  );
+}
+
+export default App;
+/*App.css code 
+#start{
+  display: inline-block; 
+  background-color: rgb(165, 158, 201); 
+  margin: 20px;
+  padding: 20px;
+  }
+  
+  .ord{
+  border: 3px solid black;
+  padding: 20px;
+  margin: 20px;
+  background-color: rgb(167, 167, 240);
+  display: inline-block; 
+  margin-right: 10px; 
+  }
+  
+  .inc_but{
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  border-radius: 4px;
+  cursor: pointer;
+  }
+
+  .dec_but{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+    }
+
+  .total{
+  font-weight: bold;
+  margin-top: 10px;
+  }*/
