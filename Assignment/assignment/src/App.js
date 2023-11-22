@@ -1,151 +1,132 @@
-import React, { useState } from 'react';
-import './App.css';
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 function App() {
-  const initialOrderItems = [
-    {
-      id: 1,
-      name: 'MAC book',
-      description: 'Apple MGN63HNA\nMacBook Air (Apple MI\nChip/8GB/256GB SSD/macOS Big\nSur/Retina) INR',
-      price: 90000,
-      quantity: 0,
-    },
-    {
-      id: 2,
-      name: 'Dell core i7',
-      description: '11th Generation Intel Core i7-11390H\n Processor Windows 11 Home INR',
-      price: 80000,
-      quantity: 0,
-    },
-    {
-      id: 3,
-      name: 'HP',
-      description: '11th generation INR',
-      price: 65000,
-      quantity: 0,
-    },
-  ];
+const [restaurants, setRestaurants] = useState([]);
+const [newRestaurant, setNewRestaurant] = useState({
+    rest_name: '',
+    rest_id: '',
+    rest_addr: '',
+    rest_reviews: 0,
+    food_menu: [],
+});
+const [updateGrade, setUpdateGrade] = useState({
+    rest_id: '',
+    rest_reviews: 0,
+});
+const [error, setError] = useState(null);
 
-  const [orderItems, setOrderItems] = useState(initialOrderItems);
-
-  const quantChange = (id, increment) => {
-    const updatedOrderItems = orderItems.map((item) => {
-      if (item.id === id) {
-        return { ...item, quantity: Math.max(item.quantity + increment, 0) };
-      }
-      return item;
+useEffect(() => {
+axios.get('http://localhost:3000/restaurants')
+.then(response => setRestaurants(response.data))
+.catch(error => console.error('Error fetching restaurants:', error));
+}, []);
+const handleAddRestaurant = () => {
+    axios.post('http://localhost:3000/restaurants',
+    newRestaurant)
+    .then(response => {
+    setRestaurants([...restaurants, response.data]);
+    setNewRestaurant({
+    rest_name: '',
+    rest_id: '',
+    rest_addr: '',
+    rest_reviews: 0,
+    food_menu: [],
     });
-  
-    setOrderItems(updatedOrderItems);
-  };
-
-  const calTc = () => {
-    let total = 0;
-    orderItems.forEach((item) => {
-      total += item.price * item.quantity;
-    });
-    return total;
-  };
-
-  const getCurDate = () => {
-    const today = new Date();
-    const date = String(today.getDate()).padStart(2, '0');
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const year = today.getFullYear();
-    return `${date}/${month}/${year}`;
-  };
-
-  const getExpDelDate = () => {
-    const today = new Date();
-    today.setDate(today.getDate() + 3);
-    const date = String(today.getDate()).padStart(2, '0');
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const year = today.getFullYear();
-    return `${date}/${month}/${year}`;
-  };
-
-  const styles = {
-    item: {
-      border: '1px solid #ccc',
-      padding: '10px',
-      margin: '10px',
-    },
-  };
-
-  return (
-    <div>
-      <div id="start" style={styles.item}>
-        <div className='summary'>
-        <h1><b>Order Summary</b></h1>
-        </div>
-        <div className="ord">
-          {orderItems.map((item) => (
-            <div key={item.id} style={styles.item} className="ord">
-              <div>
-                <strong>{item.name}</strong>
-              </div>
-              <div>
-                Description: <br />
-                <div className="description">{item.description}</div>
-              </div>
-              <div>Price: {item.price} INR</div>
-              <div>
-                Quantity: {item.quantity}<br />
-                <button className="inc_but" onClick={() => quantChange(item.id, 1)}>+</button>
-                <button className="dec_but" onClick = {()=>quantChange(item.id,-1)}>-</button>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="total">
-          <strong>Total: {calTc()} INR</strong>
-        </div>
-      </div>
-      <div>
-        Order Date: {getCurDate()}
-      </div>
-      <div>
-        Expected Delivery Date: {getExpDelDate()}
-      </div>
-    </div>
-  );
-}
-
-export default App;
-/*App.css code 
-#start{
-  display: inline-block; 
-  background-color: rgb(165, 158, 201); 
-  margin: 20px;
-  padding: 20px;
-  }
-  
-  .ord{
-  border: 3px solid black;
-  padding: 20px;
-  margin: 20px;
-  background-color: rgb(167, 167, 240);
-  display: inline-block; 
-  margin-right: 10px; 
-  }
-  
-  .inc_but{
-  background-color: white;
-  color: black;
-  border: 1px solid black;
-  border-radius: 4px;
-  cursor: pointer;
-  }
-
-  .dec_but{
-    background-color: white;
-    color: black;
-    border: 1px solid black;
-    border-radius: 4px;
-    cursor: pointer;
+})
+.catch(error => {
+    console.error('Error adding restaurant:', error);
+    if (error.response) {
+        console.error('Server responded with status:',
+        error.response.status);
+        console.error('Response data:', error.response.data);
+        setError(`Server responded with status
+        ${error.response.status}. Please check the server logs.`);
+    } 
+    else if (error.request) {
+        console.error('No response received from the server.');
+        setError('No response received from the server.Please check the server logs.');
+    } 
+    else {
+        console.error('Error setting up the request:',error.message);
+        setError('Error setting up the request. Please check the server logs.');
     }
-
-  .total{
-  font-weight: bold;
-  margin-top: 10px;
-  }*/
+});
+};
+const handleUpdateGrade = () => {
+    axios.put(`http://localhost:3000/restaurants/${updateGrade.rest_id}`, { rest_reviews: updateGrade.rest_reviews })
+    .then(response => {setRestaurants(restaurants.map(restaurant =>
+        (restaurant.rest_id === updateGrade.rest_id ? response.data :restaurant)));
+        setUpdateGrade({
+            rest_id: '',
+            rest_reviews: 0,
+    });
+})
+.catch(error => {
+    console.error('Error updating grade:', error);
+    if (error.response) {
+        console.error('Server responded with status:',
+        error.response.status);
+        console.error('Response data:', error.response.data);
+        setError(`Server responded with status
+        ${error.response.status}. Please check the server logs.`);
+    } 
+    else if (error.request) {
+        console.error('No response received from the server.');
+        setError('No response received from the server.Please check the server logs.');
+    } 
+    else {
+        console.error('Error setting up the request:',
+        error.message);
+        setError('Error setting up the request. Please check the server logs.');
+    }
+});
+};
+return(
+<div>
+    <h1>Restaurant App</h1>
+    <h2>Restaurants</h2>
+    <ul>
+        {restaurants.map(restaurant => (
+        <li key={restaurant.rest_id}>
+            {restaurant.rest_name} - Grade:
+            {restaurant.rest_reviews}
+            </li>
+            ))}
+            </ul>
+            <h2>Add New Restaurant</h2>
+            <div>
+                <label>Name:</label>
+                <input type="text" value={newRestaurant.rest_name}
+                onChange={e => setNewRestaurant({ ...newRestaurant, rest_name:e.target.value })} />
+                </div>
+                <div>
+                    <label>ID:</label>
+                    <input type="text" value={newRestaurant.rest_id}onChange={e => setNewRestaurant({ ...newRestaurant, rest_id:e.target.value })} />
+                    </div>
+                    <div>
+                        <label>Address:</label>
+                        <input type="text" value={newRestaurant.rest_addr}onChange={e => setNewRestaurant({ ...newRestaurant, rest_addr:e.target.value })} />
+                        </div>
+                        <div>
+                            <label>Grade:</label>
+                            <input type="number" value={newRestaurant.rest_reviews}onChange={e => setNewRestaurant({ ...newRestaurant,rest_reviews: e.target.value })} />
+                            </div>
+                            <div>
+                                <label>Food Menu:</label>
+                                <input type="text" value={newRestaurant.food_menu}onChange={e => setNewRestaurant({ ...newRestaurant, food_menu:e.target.value.split(',') })} />
+                                </div>
+                                <button onClick={handleAddRestaurant}>Add Restaurant</button>
+                                <h2>Update Restaurant Grade</h2>
+                                <div>
+                                    <label>ID:</label>
+                                    <input type="text" value={updateGrade.rest_id} onChange={e=> setUpdateGrade({ ...updateGrade, rest_id: e.target.value })}/>
+                                    </div>
+                                    <div>
+                                        <label>New Grade:</label><input type="number" value={updateGrade.rest_reviews}onChange={e => setUpdateGrade({ ...updateGrade, rest_reviews:e.target.value })} />
+                                        </div>
+                                        <button onClick={handleUpdateGrade}>Update Grade</button>
+                                        {error && <p style={{ color: 'red' }}>{error}</p>}
+                                        </div>
+    );
+}
+export default App;
